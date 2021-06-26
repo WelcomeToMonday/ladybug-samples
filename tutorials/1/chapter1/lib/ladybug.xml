@@ -959,12 +959,12 @@
             </summary>
             <param name="sprite"></param>
         </member>
-        <member name="M:Ladybug.ECS.Components.SpriteComponent.AddAnimation(System.String,Microsoft.Xna.Framework.Graphics.Texture2D,System.Int32,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32},System.Boolean)">
+        <member name="M:Ladybug.ECS.Components.SpriteComponent.AddAnimation(System.String,Ladybug.Graphics.SpriteAtlas,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean)">
             <summary>
             Adds a new Animation to this SpriteComponent
             </summary>
             <param name="animationName">Name of the new Animation</param>
-            <param name="sourceTexture">Source texture</param>
+            <param name="sourceAtlas">Source <see cref="T:Ladybug.Graphics.SpriteAtlas"/></param>
             <param name="rows">Rows in the source texture</param>
             <param name="columns">Columns in the source texture</param>
             <param name="animationSpeed">Speed of the animation</param>
@@ -1537,6 +1537,90 @@
             </summary>
             <param name="graphicsDevice"></param>
             <param name="color"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Ladybug.Graphics.SpriteAtlas">
+            <summary>
+            Ladybug SpriteAtlas
+            </summary>
+        </member>
+        <member name="M:Ladybug.Graphics.SpriteAtlas.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D,System.Int32,System.Int32)">
+            <summary>
+            Creates a new SpriteAtlas
+            </summary>
+            <param name="sourceTexture">Source texture</param>
+            <param name="rows">Number of sprite rows in source texture</param>
+            <param name="cols">Number of sprite columns in source texture</param>
+        </member>
+        <member name="P:Ladybug.Graphics.SpriteAtlas.SpriteWidth">
+            <summary>
+            Width of a single sprite in this SpriteAtlas
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.Graphics.SpriteAtlas.SpriteHeight">
+            <summary>
+            Height of a single sprite in the SpriteAtlas
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.Graphics.SpriteAtlas.Texture">
+            <summary>
+            Source texture used by this SpriteAtlas
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.Graphics.SpriteAtlas.Item(System.Int32)">
+            <summary>
+            Returns a <see cref="T:Ladybug.Graphics.Sprite"/> stored in this SpriteAtlas
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.Graphics.SpriteAtlas.Item(System.Int32,System.Int32)">
+            <summary>
+            Returns a <see cref="T:Ladybug.Graphics.Sprite"/> stored in this SpriteAtlas
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.Graphics.SpriteAtlas.Item(Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Returns a <see cref="T:Ladybug.Graphics.Sprite"/> stored in this SpriteAtlas
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.Graphics.SpriteAtlas.Item(System.String)">
+            <summary>
+            Returns a <see cref="T:Ladybug.Graphics.Sprite"/> stored in this SpriteAtlas
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:Ladybug.Graphics.SpriteAtlas.TagSprite(System.String,Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Adds a string tag to a <see cref="T:Ladybug.Graphics.Sprite"/> stored in this SpriteAtlas
+            </summary>
+            <param name="tag">Name of tag</param>
+            <param name="coordinates">Coordinate of <see cref="T:Ladybug.Graphics.Sprite"/> in SpriteAtlas</param>
+        </member>
+        <member name="M:Ladybug.Graphics.SpriteAtlas.TagSprite(System.String,System.Int32,System.Int32)">
+            <summary>
+            Adds a string tag to a <see cref="T:Ladybug.Graphics.Sprite"/> stored in this SpriteAtlas
+            </summary>
+            <param name="tag">Name of tag</param>
+            <param name="x">X coordinate of <see cref="T:Ladybug.Graphics.Sprite"/> in SpriteAtlas</param>
+            <param name="y">Y coordinate of <see cref="T:Ladybug.Graphics.Sprite"/> in SpriteAtlas</param>
+        </member>
+        <member name="M:Ladybug.Graphics.SpriteAtlas.TagSprite(System.String,System.Int32)">
+            <summary>
+            Adds a string tag to a <see cref="T:Ladybug.Graphics.Sprite"/> stored in this SpriteAtlas
+            </summary>
+            <param name="tag">Name of tag</param>
+            <param name="index">Index of <see cref="T:Ladybug.Graphics.Sprite"/> in SpriteAtlas</param>
+        </member>
+        <member name="M:Ladybug.Graphics.SpriteAtlas.GetSpriteFromTag(System.String)">
+            <summary>
+            Retrieves the <see cref="T:Ladybug.Graphics.Sprite"/> with the given tag
+            </summary>
+            <param name="tag">Name of tag</param>
             <returns></returns>
         </member>
         <member name="M:Ladybug.Pathfinding.NodePath.Reverse">
