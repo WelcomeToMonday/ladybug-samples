@@ -11,8 +11,8 @@ namespace xplatform
 		{
 			using (var game = new Game())
 			{
-				game.GraphicsDeviceManager.PreferredBackBufferHeight = 480;
-				game.GraphicsDeviceManager.PreferredBackBufferWidth = 480;
+				game.GraphicsDeviceManager.PreferredBackBufferHeight = MainScene.GRID_CELL_SIZE * MainScene.GRID_SIZE;
+				game.GraphicsDeviceManager.PreferredBackBufferWidth = MainScene.GRID_CELL_SIZE * MainScene.GRID_SIZE;
 				game.GraphicsDeviceManager.ApplyChanges();
 				game.LoadScene<MainScene>();
 				game.Run();
