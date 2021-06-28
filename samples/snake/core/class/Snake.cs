@@ -9,7 +9,7 @@ public class Snake
 
 	public Snake(int length, Vector2 startPosition)
 	{
-		MaxLength = length;
+		Length = length;
 		Positions.Add(startPosition);
 	}
 
@@ -22,7 +22,7 @@ public class Snake
 
 	public Direction NextDirection { get; private set; } = Direction.Right;
 
-	public int MaxLength { get; private set; }
+	public int Length { get; private set; }
 
 	public void SetDirection(Direction newDirection)
 	{
@@ -90,15 +90,15 @@ public class Snake
 			Collide?.Invoke(this, new EventArgs());
 		}
 
-		Positions.Insert(0, new Vector2(newX, newY));
+		Positions.Insert(0, newPos);
 
-		if (Positions.Count > MaxLength)
+		if (Positions.Count > Length)
 		{
 			Positions.Remove(Tail);
 		}
 	}
 
-	public void Grow() => MaxLength++;
+	public void Grow() => Length++;
 
 	private bool CheckCollision(Vector2 checkPos)
 	{
