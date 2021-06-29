@@ -73,9 +73,11 @@ public class MainScene : Scene
 		
 		do
 		{
-			location = new Vector2(_random.Next(0, GRID_SIZE), _random.Next(0, GRID_SIZE));
+			// We set the random Y coordinate to a minimum of 1 so that it stays out of the top row
+			// and doesn't risk obstructing the score.
+			location = new Vector2(_random.Next(0, GRID_SIZE), _random.Next(1, GRID_SIZE));
 		}
-		while (location.Y == 0 || _snake.Positions.Contains(location)); // We prevent the apple from spawning at Y=0 so that it doesn't obfuscate the Score
+		while (_snake.Positions.Contains(location));
 
 		_appleLocation = location;
 	}
