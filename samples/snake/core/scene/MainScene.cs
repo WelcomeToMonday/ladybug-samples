@@ -47,13 +47,13 @@ public class MainScene : Scene
 	{
 		ResourceCatalog.LoadResource<Texture2D>("snake body", "image/snake-body");
 		ResourceCatalog.LoadResource<Texture2D>("apple", "image/apple");
+		_snakeSprite = new Sprite(ResourceCatalog.GetResource<Texture2D>("snake body"));
+		_appleSprite = new Sprite(ResourceCatalog.GetResource<Texture2D>("apple"));
 		_scoreFont = ResourceCatalog.LoadResource<SpriteFont>("font", "font/default-font");
 	}
 
 	private void Initialize()
 	{
-		_snakeSprite = new Sprite(ResourceCatalog.GetResource<Texture2D>("snake body"));
-		_appleSprite = new Sprite(ResourceCatalog.GetResource<Texture2D>("apple"));
 		_keyboard = new KeyboardMonitor();
 		_tickTimer = _tickDelay;
 		NewGame();

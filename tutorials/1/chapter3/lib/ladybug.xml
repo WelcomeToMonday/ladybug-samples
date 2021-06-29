@@ -1,0 +1,2007 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ladybug</name>
+    </assembly>
+    <members>
+        <member name="T:Ladybug.Camera">
+            <summary>
+            Ladybug Camera
+            </summary>
+        </member>
+        <member name="M:Ladybug.Camera.#ctor(Microsoft.Xna.Framework.Graphics.Viewport)">
+            <summary>
+            Creates a new Camera
+            </summary>
+            <param name="viewport"></param>
+        </member>
+        <member name="P:Ladybug.Camera.Position">
+            <summary>
+            World-relative position of the Camera
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.Camera.Bounds">
+            <summary>
+            Bounds of the Camera
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.Camera.AllowedArea">
+            <summary>
+            World-relative bounds the Camera is restricted to
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.Camera.View">
+            <summary>
+            Viewport bounds
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.Camera.Transform">
+            <summary>
+            The Camera's size, scale, and rotation
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.Camera.Zoom">
+            <summary>
+            Zoom level
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:Ladybug.Camera.ZoomBy(System.Single)">
+            <summary>
+            Adjust the zoom level relative to the
+            current zoom level
+            </summary>
+            <param name="z"></param>
+        </member>
+        <member name="M:Ladybug.Camera.SetZoom(System.Single)">
+            <summary>
+            Set the zoom level
+            </summary>
+            <param name="z"></param>
+        </member>
+        <member name="M:Ladybug.Camera.Move(Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Move the Camera relative to its current
+            position
+            </summary>
+            <param name="newPosition"></param>
+        </member>
+        <member name="M:Ladybug.Camera.LerpTo(Microsoft.Xna.Framework.Vector2,System.Single)">
+            <summary>
+            Adjust the Camera's position via linear interpolation
+            </summary>
+            <param name="newPosition"></param>
+            <param name="by"></param>
+        </member>
+        <member name="M:Ladybug.Camera.SetAllowedArea(Microsoft.Xna.Framework.Rectangle)">
+            <summary>
+            Set the bounds the Camera must remain
+            within
+            </summary>
+            <param name="r"></param>
+        </member>
+        <member name="M:Ladybug.Camera.ClearAllowedArea">
+            <summary>
+            Remove bounds restrictions
+            </summary>
+        </member>
+        <member name="M:Ladybug.Camera.SetPosition(Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Sets the Camera's position
+            </summary>
+            <param name="newPosition"></param>
+        </member>
+        <member name="M:Ladybug.Camera.ScreenToWorldSpace(Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Converts a location in screen position context to a location
+            in world position context
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ladybug.Camera.WorldToScreenSpace(Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Converts a location in world position context to a location in
+            screen position context
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ladybug.Camera.Update(Microsoft.Xna.Framework.Graphics.Viewport)">
+            <summary>
+            Updates the Camera
+            </summary>
+            <param name="vp"></param>
+        </member>
+        <member name="M:Ladybug.Camera.RefreshView">
+            <summary>
+            Updates visible area.
+            <remarks>Used for culling and draw-optimization</remarks>
+            </summary>
+        </member>
+        <member name="T:Ladybug.Game">
+            <summary>
+            Ladybug Game instance
+            </summary>
+        </member>
+        <member name="F:Ladybug.Game.SceneList">
+            <summary>
+            The list of Scenes being managed by this Game instance
+            </summary>
+            <remarks>
+            Use <see cref="M:Ladybug.Game.LoadScene``1"/> and <see cref="M:Ladybug.Game.UnloadScene(Ladybug.Scene)"/> to add and remove Scenes from the list
+            </remarks>
+        </member>
+        <member name="M:Ladybug.Game.#ctor">
+            <summary>
+            Creates a new Ladybug Game instance
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Ladybug.Game.ResourceCatalog">
+            <summary>
+            Game-global Resource Catalog
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.Game.GraphicsDeviceManager">
+            <summary>
+            The Game instance's resident GraphicsDeviceManager, used by managed scenes for rendering.
+            </summary>
+        </member>
+        <member name="P:Ladybug.Game.ThreadManager">
+            <summary>
+            This Game instance's resident <see cref="T:Ladybug.ThreadManager"/>
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:Ladybug.Game.LoadSceneAsync``1">
+            <summary>
+            Creates and Loads a new <see cref="T:Ladybug.Scene"/> asynchronously
+            </summary>
+            <typeparam name="T">Type of <see cref="T:Ladybug.Scene"/> to create</typeparam>
+        </member>
+        <member name="M:Ladybug.Game.LoadSceneAsync(Ladybug.Scene)">
+            <summary>
+            Loads a Scene asynchronously
+            </summary>
+            <param name="scene"><see cref="T:Ladybug.Scene"/> to be loaded asynchronously</param>
+        </member>
+        <member name="M:Ladybug.Game.LoadScene``1">
+            <summary>
+            Creates and Loads a new <see cref="T:Ladybug.Scene"/> into the Game instance
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Ladybug.Game.LoadScene(Ladybug.Scene)">
+            <summary>
+            Loads a <see cref="T:Ladybug.Scene"/> into the Game instance
+            </summary>
+            <param name="scene">Scene to be loaded</param>
+        </member>
+        <member name="M:Ladybug.Game.UnloadScene(Ladybug.Scene)">
+            <summary>
+            Removes a <see cref="T:Ladybug.Scene"/> from the Game instance, unloading its assets and removing it from the
+            scene execution loop.
+            </summary>
+            <param name="scene">Scene to be unloaded</param>
+        </member>
+        <member name="M:Ladybug.Game.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Updates all Scenes managed by this Game instance which are neither Paused nor Suspended.
+            </summary>
+            <param name="gameTime">Time passed since previous Update</param>
+        </member>
+        <member name="M:Ladybug.Game.Draw(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Renders all Scenes managed by this Game instance which are not Suspended.
+            </summary>
+            <param name="gameTime">Time passed since previous Draw</param>
+        </member>
+        <member name="T:Ladybug.ResourceCatalog">
+            <summary>
+            Ladybug ResourceCatalog instance
+            </summary>
+        </member>
+        <member name="M:Ladybug.ResourceCatalog.#ctor(Microsoft.Xna.Framework.Content.ContentManager)">
+            <summary>
+            Creates a new RsourceCatalog instance
+            </summary>
+            <param name="contentManager">ContentManager to be used by the ResourceCatalog when loading content resources</param>
+        </member>
+        <member name="P:Ladybug.ResourceCatalog.ContentManager">
+            <summary>
+            ResourceCatalog's resident ContentManager
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:Ladybug.ResourceCatalog.ResourceExists``1(System.String)">
+            <summary>
+            Checks to see if resource exists
+            </summary>
+            <param name="identifier">Name of resource</param>
+            <typeparam name="T">Type of resource</typeparam>
+            <returns>True if resource exists, False if resource not found.</returns>
+        </member>
+        <member name="M:Ladybug.ResourceCatalog.LoadResource``1(System.String,System.String)">
+            <summary>
+            Loads a resource into the ResourceCatalog
+            </summary>
+            <param name="identifier">Name of new resource</param>
+            <param name="source">Path to resource</param>
+            <typeparam name="T">Type of resource</typeparam>
+            <returns>Resource loaded from given path</returns>
+        </member>
+        <member name="M:Ladybug.ResourceCatalog.GetResource``1(System.String)">
+            <summary>
+            Gets the given resource from the ResourceCatalog
+            </summary>
+            <param name="name">Name of resource</param>
+            <typeparam name="T">Type of resource</typeparam>
+            <returns>Requested resource</returns>
+        </member>
+        <member name="M:Ladybug.ResourceCatalog.TryGetResource``1(System.String,``0@)">
+            <summary>
+            Attempts to find the given resource in this ResourceCatalog
+            </summary>
+            <param name="name">Name of resource</param>
+            <param name="resource">Reference to resource, if found</param>
+            <typeparam name="T">Type of resource</typeparam>
+            <returns>True if resource is found, False otherwise</returns>
+        </member>
+        <member name="M:Ladybug.ResourceCatalog.SaveResource``1(System.String,``0)">
+            <summary>
+            Saves an already loaded resource to the ResourceCatalog
+            </summary>
+            <param name="identifier">Name of resource</param>
+            <param name="resource">Resource to save</param>
+            <typeparam name="T">Type of resource</typeparam>
+        </member>
+        <member name="T:Ladybug.SceneState">
+            <summary>
+            Lists possible states a Scene can be in, which determine its Update and Draw behavior
+            </summary>
+        </member>
+        <member name="F:Ladybug.SceneState.ACTIVE">
+            <summary>Active Scenes will have both <c>Update()</c> and <c>Draw()</c> called each frame.</summary>
+        </member>
+        <member name="F:Ladybug.SceneState.PAUSED">
+            <summary>Paused Scenes will only have <c>Draw()</c> called each frame</summary>
+        </member>
+        <member name="F:Ladybug.SceneState.SUSPENDED">
+            <summary>Suspended Scenes will have neither <c>Update()</c> nor <c>Draw()</c> called each frame.</summary>
+        </member>
+        <member name="T:Ladybug.Scene">
+            <summary>
+            A Scene represents a single game Update/Render loop.
+            </summary>
+        </member>
+        <member name="E:Ladybug.Scene.LoadContentAsyncStart">
+            <summary>
+            Asynchronous content loading has started
+            </summary>
+        </member>
+        <member name="E:Ladybug.Scene.LoadContentAsyncComplete">
+            <summary>
+            Asynchronous content loading has completed
+            </summary>
+        </member>
+        <member name="E:Ladybug.Scene.InitializeAsyncStart">
+            <summary>
+            Asynchronous initialization has started
+            </summary>
+        </member>
+        <member name="E:Ladybug.Scene.InitializeAsyncComplete">
+            <summary>
+            Asynchronous initialization has completed
+            </summary>
+        </member>
+        <member name="E:Ladybug.Scene.LoadContentComplete">
+            <summary>
+            Content loading has completed
+            </summary>
+        </member>
+        <member name="E:Ladybug.Scene.InitializeComplete">
+            <summary>
+            Initialization has completed
+            </summary>
+        </member>
+        <member name="E:Ladybug.Scene.Paused">
+            <summary>
+            Scene has been paused
+            </summary>
+        </member>
+        <member name="E:Ladybug.Scene.Unpaused">
+            <summary>
+            Scene has been unpaused
+            </summary>
+        </member>
+        <member name="E:Ladybug.Scene.Suspended">
+            <summary>
+            Scene has been suspended
+            </summary>
+        </member>
+        <member name="E:Ladybug.Scene.Unsuspended">
+            <summary>
+            Scene has been unsuspended
+            </summary>
+        </member>
+        <member name="E:Ladybug.Scene.Unloaded">
+            <summary>
+            Scene has been unloaded
+            </summary>
+        </member>
+        <member name="E:Ladybug.Scene.Stopped">
+            <summary>
+            The Scene has been paused or suspended
+            </summary>
+        </member>
+        <member name="E:Ladybug.Scene.Resumed">
+            <summary>
+            The Scene has been unpaused or unsuspended
+            </summary>
+        </member>
+        <member name="F:Ladybug.Scene.SpriteBatch">
+            <summary>
+            The Scene's default SpriteBatch
+            </summary>
+        </member>
+        <member name="M:Ladybug.Scene.#ctor(Ladybug.Game)">
+            <summary>
+            Creates a new Scene
+            </summary>
+            <param name="game"><see cref="T:Ladybug.Game"/> instance that will be managing this Scene</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ladybug.Scene.#ctor">
+            <summary>
+            Creates a new Scene
+            </summary>
+        </member>
+        <member name="M:Ladybug.Scene.SetGame(Ladybug.Game)">
+            <summary>
+            Sets the <see cref="T:Ladybug.Game"/> object that will be managing this Scene
+            </summary>
+            <param name="game">Game object that will be managing this Scene</param>
+        </member>
+        <member name="P:Ladybug.Scene.InitializedAsync">
+            <summary>
+            Whether this Scene has completed asynchronous initialization
+            </summary>
+        </member>
+        <member name="P:Ladybug.Scene.ContentLoadedAsync">
+            <summary>
+            Whether this Scene has completed asynchronous content loading
+            </summary>
+        </member>
+        <member name="P:Ladybug.Scene.Initialized">
+            <summary>
+            Whether this Scene has completed initialization
+            </summary>
+        </member>
+        <member name="P:Ladybug.Scene.ContentLoaded">
+            <summary>
+            Whether this Scene has completed content loading
+            </summary>
+        </member>
+        <member name="P:Ladybug.Scene.ResourceCatalog">
+            <summary>
+            This Scene's resident <see cref="T:Ladybug.ResourceCatalog"/>
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.Scene.Content">
+            <summary>
+            Reference to the Scene's ContentManager
+            </summary>
+            <value></value>
+            <remarks>
+            This ContentManager is intended to be accessed primarily through the Scene's 
+            ResourceCatalog.
+            </remarks>
+        </member>
+        <member name="P:Ladybug.Scene.Game">
+            <summary>
+            Reference to the <see cref="T:Ladybug.Game"/> instance that is handling this scene
+            </summary>
+        </member>
+        <member name="P:Ladybug.Scene.State">
+            <summary>
+            Current <see cref="T:Ladybug.SceneState"/> of the Scene
+            </summary>
+        </member>
+        <member name="M:Ladybug.Scene.OnLoadContentAsync(System.Func{System.Threading.Tasks.Task})">
+            <summary>
+            Sets the task that is run asynchronously when the Scene's
+            content is loaded
+            </summary>
+            <param name="func">Asynchronous task run upon loading the Scene's content</param>
+            <returns>Scene</returns>
+        </member>
+        <member name="M:Ladybug.Scene.OnInitializeAsync(System.Func{System.Threading.Tasks.Task})">
+            <summary>
+            Sets the task that is run when the Scene is initialized
+            asynchronously
+            </summary>
+            <param name="func">Asycronous task run upon initializing the Scene</param>
+            <returns>Scene</returns>
+        </member>
+        <member name="M:Ladybug.Scene.OnLoadContent(System.Action)">
+            <summary>
+            Sets the action that is run when the Scene's content is
+            loaded.
+            </summary>
+            <param name="action">Action run upon loading the Scene's content</param>
+            <returns>Scene</returns>
+        </member>
+        <member name="M:Ladybug.Scene.OnInitialize(System.Action)">
+            <summary>
+            Sets the action that is run when the Scene is initialized
+            </summary>
+            <param name="action">Action run upon initializing the Scene</param>
+            <returns>Scene</returns>
+        </member>
+        <member name="M:Ladybug.Scene.OnUpdate(System.Action{Microsoft.Xna.Framework.GameTime})">
+            <summary>
+            Sets the action that is run every frame when the Scene
+            is updated
+            </summary>
+            <param name="action">Action run upon updating the Scene</param>
+            <returns>Scene</returns>
+        </member>
+        <member name="M:Ladybug.Scene.OnDraw(System.Action{Microsoft.Xna.Framework.GameTime})">
+            <summary>
+            Sets the action that is run every frame when
+            the Scene Draws to the screen
+            </summary>
+            <param name="action">Action run upon drawing the Scene</param>
+            <returns>Scene</returns>
+        </member>
+        <member name="M:Ladybug.Scene.OnUnload(System.Action)">
+            <summary>
+            Sets the action that is run when the Scene
+            is unloaded
+            </summary>
+            <param name="action">Action run upon unloading the Scene</param>
+            <returns>Scene</returns>
+        </member>
+        <member name="M:Ladybug.Scene.Unload">
+            <summary>
+            Unloads the Scene, removing it from the <see cref="T:Ladybug.Game"/> instance that is managing it
+            </summary>
+        </member>
+        <member name="M:Ladybug.Scene.OnPause(System.Action)">
+            <summary>
+            Sets the action that is run when the Scene is paused
+            </summary>
+            <param name="action">Action run upon pausing the Scene</param>
+            <returns>Scene</returns>
+        </member>
+        <member name="M:Ladybug.Scene.Pause">
+            <summary>
+            Pauses the Scene
+            </summary>
+            <remarks>
+            A paused Scene will not execute Update actions,
+            but will still execute Draw actions
+            </remarks>
+        </member>
+        <member name="M:Ladybug.Scene.OnUnpause(System.Action)">
+            <summary>
+            Sets the action that is run when the Scene is unpaused
+            </summary>
+            <param name="action">Action run upon unpausing the Scene</param>
+            <returns>Scene</returns>
+        </member>
+        <member name="M:Ladybug.Scene.Unpause">
+            <summary>
+            Unpauses the Scene
+            </summary>
+            <remarks>
+            Returns the Scene to ACTIVE state,
+            only if state was previously PAUSED
+            </remarks>
+        </member>
+        <member name="M:Ladybug.Scene.OnSuspend(System.Action)">
+            <summary>
+            Sets the action that is run when the scene is suspended
+            </summary>
+            <param name="action">Action run upon suspending the Scene</param>
+            <returns>Scene</returns>
+        </member>
+        <member name="M:Ladybug.Scene.Suspend">
+            <summary>
+            Suspends the Scene
+            </summary>
+            <remarks>
+            A suspended Scene will not execute
+            Update or Draw actions
+            </remarks>
+        </member>
+        <member name="M:Ladybug.Scene.OnUnsuspend(System.Action)">
+            <summary>
+            Sets the action that is run when the Scene is
+            unsuspended
+            </summary>
+            <param name="action">Action run upon unsuspending the Scene</param>
+            <returns>Scene</returns>
+        </member>
+        <member name="M:Ladybug.Scene.Unsuspend">
+            <summary>
+            Unsuspends the Scene
+            </summary>
+            <remarks>
+            Returns the Scene to ACTIVE state,
+            only if state was previously SUSPENDED
+            </remarks>
+        </member>
+        <member name="M:Ladybug.Scene.OnStop(System.Action)">
+            <summary>
+            Sets the action that run when the Scene is
+            paused or suspended
+            </summary>
+            <param name="action">Action run upon pausing or suspending the Scene</param>
+            <returns>Scene</returns>
+        </member>
+        <member name="M:Ladybug.Scene.OnResume(System.Action)">
+            <summary>
+            Sets the action that is run when the Scene is
+            unpaused or unsuspended
+            </summary>
+            <param name="action"></param>
+            <returns>Scene</returns>
+        </member>
+        <member name="T:Ladybug.Transform">
+            <summary>
+            Ladybug Transform instance
+            </summary>
+            <remarks>
+            Represents basic location, size, scale, and rotation information
+            </remarks>
+        </member>
+        <member name="P:Ladybug.Transform.DefaultScale">
+            <summary>
+            Default scale value
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Ladybug.Transform.Bounds">
+            <summary>
+            The outer bounds of the Transform
+            </summary>
+        </member>
+        <member name="P:Ladybug.Transform.Rotation">
+            <summary>
+            The rotation value of the Transform, in degrees
+            </summary>
+        </member>
+        <member name="P:Ladybug.Transform.Scale">
+            <summary>
+            The scale of the Transform
+            </summary>
+        </member>
+        <member name="P:Ladybug.Transform.Location">
+            <summary>
+            Read-only location value of the Transform
+            </summary>
+            <remarks>
+            To move the Transform, use <see cref="M:Ladybug.Transform.Move(System.Int32,System.Int32)"/>,
+            <see cref="M:Ladybug.Transform.SetPosition(System.Int32,System.Int32,Ladybug.BoxHandle)"/>, or their
+            overloads.
+            </remarks>
+        </member>
+        <member name="M:Ladybug.Transform.Move(Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Moves the Transform, updating its position
+            </summary>
+            <param name="newPos">Vector2 value to move the Transform by</param>
+        </member>
+        <member name="M:Ladybug.Transform.Move(System.Int32,System.Int32)">
+            <summary>
+            Moves the Transform, updating its position
+            </summary>
+            <param name="xMove">Distance to move the Transform by horizontally, in pixels</param>
+            <param name="yMove">Distance to move the Transform by vertically, in pixels</param>
+        </member>
+        <member name="M:Ladybug.Transform.SetBounds(Microsoft.Xna.Framework.Rectangle)">
+            <summary>
+            Sets the Transform's bounds
+            </summary>
+            <param name="rectangle">New Bounds for the Transform</param>
+        </member>
+        <member name="M:Ladybug.Transform.SetPosition(System.Int32,System.Int32,Ladybug.BoxHandle)">
+            <summary>
+            Sets the position of the Transform
+            </summary>
+            <param name="x">New x coordinate of the Transform</param>
+            <param name="y">New y coordinate of the Transform</param>
+            <param name="handle">The handle of the Transform's Bounds used to place it in its new Position</param>
+        </member>
+        <member name="M:Ladybug.Transform.SetPosition(Microsoft.Xna.Framework.Vector2,Ladybug.BoxHandle)">
+            <summary>
+            Sets the position of the Transform
+            </summary>
+            <param name="newPos">New location of the Transform</param>
+            <param name="handle">The handle of the Transform's Bounds used to place it in its new Position</param>
+        </member>
+        <member name="M:Ladybug.Transform.RotateBy(System.Single)">
+            <summary>
+            Rotates the Transform
+            </summary>
+            <param name="newRot">Value to rotate the Transform by, in degrees</param>
+            <remarks>
+            This method rotates the Transform relative to its current rotation.
+            To set the Transform's rotation to an absolute value, use <see cref="M:Ladybug.Transform.SetRotation(System.Single)"/>
+            </remarks>
+        </member>
+        <member name="M:Ladybug.Transform.SetRotation(System.Single)">
+            <summary>
+            Sets the Transform's rotation
+            </summary>
+            <param name="newRot">Transform's new rotation value, in degrees</param>
+        </member>
+        <member name="M:Ladybug.Transform.ScaleBy(System.Single)">
+            <summary>
+            Scales the Transform
+            </summary>
+            <param name="newScale">Value to scale the transform by</param>
+            <remarks>
+            This method scales the Transform relative to its current scale.
+            To set the Transform's scale to an absolute value, use <see cref="M:Ladybug.Transform.SetScale(System.Single)"/>
+            </remarks>
+        </member>
+        <member name="M:Ladybug.Transform.ScaleBy(Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Scales the Transform
+            </summary>
+            <param name="newScale">Value to scale the transform by</param>
+            <remarks>
+            This method scales the Transform relative to its current scale.
+            To set the Transform's scale to an absolute value, use <see cref="M:Ladybug.Transform.SetScale(System.Single)"/>
+            </remarks>
+        </member>
+        <member name="M:Ladybug.Transform.SetScale(System.Single)">
+            <summary>
+            Sets the Transform's Scale
+            </summary>
+            <param name="newScale">Transform's new scale value</param>
+        </member>
+        <member name="M:Ladybug.Transform.SetScale(Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Sets the Transform's Scale
+            </summary>
+            <param name="newScale">Transform's new scale value</param>
+        </member>
+        <member name="T:Ladybug.Collision.CollisionGroup">
+            <summary>
+            A CollisionGroup contains methods to query a list of
+            ICollision objects to get CollisionResults
+            </summary>
+        </member>
+        <member name="T:Ladybug.ECS.Component">
+            <summary>
+            A Component that can be registered and managed
+            by an <see cref="T:Ladybug.ECS.ECS"/> instance
+            </summary>
+        </member>
+        <member name="P:Ladybug.ECS.Component.Name">
+            <summary>
+            Name of the Component instance
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.ECS.Component.Entity">
+            <summary>
+            <see cref="T:Ladybug.ECS.Entity"/> that contains this Component
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.ECS.Component.ECS">
+            <summary>
+            <see cref="T:Ladybug.ECS.ECS"/> that is managing this Component
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.ECS.Component.Scene">
+            <summary>
+            <see cref="T:Ladybug.Scene"/> that contains the <see cref="T:Ladybug.ECS.ECS"/> that
+            manages this Component
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.ECS.Component.Game">
+            <summary>
+            <see cref="T:Ladybug.Game"/> instance that is managing the
+            <see cref="T:Ladybug.Scene"/> that contains the 
+            <see cref="T:Ladybug.ECS.Entity"/> managing this Component
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.ECS.Component.Active">
+            <summary>
+            Whether the Component is active
+            </summary>
+            <value></value>
+            <remarks>
+            By default, Active is used to
+            determine whether to update this
+            Component. This behavior can be changed
+            by overriding <see cref="M:Ladybug.ECS.Component.CheckRunUpdate"/>
+            </remarks>
+        </member>
+        <member name="P:Ladybug.ECS.Component.Visible">
+            <summary>
+            Whether the Component is visible
+            </summary>
+            <value></value>
+            <remarks>
+            By default, Visible is used to
+            determine whether to draw this
+            Component. This behavior can be changed
+            by overriding <see cref="M:Ladybug.ECS.Component.CheckRunDraw"/>
+            </remarks>
+        </member>
+        <member name="P:Ladybug.ECS.Component.DrawPriority">
+            <summary>
+            The Draw Priority of this Component
+            </summary>
+            <value></value>
+            <remarks>
+            Components with a smaller value in DrawPriority
+            are drawn earlier than those with a larger value
+            </remarks>
+        </member>
+        <member name="M:Ladybug.ECS.Component.CheckRunUpdate">
+            <summary>
+            Determines whether to Update this component each frame
+            </summary>
+            <returns></returns>
+            <remarks>
+            By default, checks that Active and Entity.Active are true
+            </remarks>
+        </member>
+        <member name="M:Ladybug.ECS.Component.CheckRunDraw">
+            <summary>
+            Determines whether to Draw this component each frame
+            </summary>
+            <returns></returns>
+            <remarks>
+            By default, checks that <see cref="P:Ladybug.ECS.Component.Visible"/> and <see cref="P:Ladybug.ECS.Entity.Visible"/> are true
+            </remarks>
+        </member>
+        <member name="M:Ladybug.ECS.Component.OnInitialize(System.Action)">
+            <summary>
+            Defines this Component's behavior upon initialization
+            </summary>
+            <param name="action">Action to be performed by this Component upon initialization</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ladybug.ECS.Component.OnUpdate(System.Action{Microsoft.Xna.Framework.GameTime})">
+            <summary>
+            Defines this Component's behavior upon updating
+            </summary>
+            <param name="action">Action to be performed by this Component upon each update</param>
+            <returns></returns>
+            <remarks>
+            This overload sets the action taken during the "Update" Update step
+            </remarks>
+        </member>
+        <member name="M:Ladybug.ECS.Component.OnUpdate(System.String,System.Action{Microsoft.Xna.Framework.GameTime})">
+            <summary>
+            Defines this Component's behavior upon the given update step
+            </summary>
+            <param name="step">Update step on which the given action will be performed</param>
+            <param name="action">Action to perform on the given Update step</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ladybug.ECS.Component.OnDraw(System.Action{Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Graphics.SpriteBatch})">
+            <summary>
+            Defines this Component's behavior upon being drawn
+            </summary>
+            <param name="action">Action to be performed by this Component upon each draw call</param>
+            <returns></returns>
+            <remarks>
+            This overload sets the action taken upon the "Draw" Draw step
+            </remarks>
+        </member>
+        <member name="M:Ladybug.ECS.Component.OnDraw(System.String,System.Action{Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Graphics.SpriteBatch})">
+            <summary>
+            Defines this Component's behavior upon the given draw step
+            </summary>
+            <param name="step">Draw step on which the given action will be performed</param>
+            <param name="action">Action to perform on the given Draw step</param>
+            <returns></returns>
+        </member>
+        <member name="T:Ladybug.ECS.ComponentSystem`1">
+            <summary>
+            A System responsible for processing <see cref="T:Ladybug.ECS.Component"/> 
+            update and draw behavior
+            </summary>
+            <typeparam name="T">
+            Type of <see cref="T:Ladybug.ECS.Component"/> this ComponentSystem
+            will process
+            </typeparam>
+        </member>
+        <member name="M:Ladybug.ECS.ComponentSystem`1.RegisterComponent(`0)">
+            <summary>
+            Registers a <see cref="T:Ladybug.ECS.Component"/> to be
+            processed by this ComponentSystem
+            </summary>
+            <param name="component"></param>
+        </member>
+        <member name="M:Ladybug.ECS.ComponentSystem`1.DeregisterComponent(`0)">
+            <summary>
+            Removes a <see cref="T:Ladybug.ECS.Component"/> from
+            this ComponentSystem's process queues
+            </summary>
+            <param name="component"></param>
+        </member>
+        <member name="M:Ladybug.ECS.ComponentSystem`1.Update(System.String,Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Run an Update step for all <see cref="T:Ladybug.ECS.Component"/>
+            instances registered with this ComponentSystem
+            </summary>
+            <param name="step">Update step to run</param>
+            <param name="gameTime"></param>
+        </member>
+        <member name="M:Ladybug.ECS.ComponentSystem`1.Draw(System.String,Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Run a Draw step for all <see cref="T:Ladybug.ECS.Component"/>
+            instances registered with this ComponentSystem
+            </summary>
+            <param name="step">Draw step to run</param>
+            <param name="gameTime"></param>
+            <param name="spriteBatch"></param>
+        </member>
+        <member name="M:Ladybug.ECS.ComponentSystem`1.RequestDrawSort">
+            <summary>
+            Requests the ComponentSystem to resort registered
+            <see cref="T:Ladybug.ECS.Component"/> instances by
+            their <see cref="P:Ladybug.ECS.Component.DrawPriority"/>
+            </summary>
+        </member>
+        <member name="T:Ladybug.ECS.Components.InputComponentSystem">
+            <summary>
+            ComponentSystem responsible for processing <see cref="T:Ladybug.ECS.Components.InputComponent"/> Components
+            </summary>
+        </member>
+        <member name="T:Ladybug.ECS.Components.InputComponent">
+            <summary>
+            Ladybug standard component for input handling
+            </summary>
+        </member>
+        <member name="M:Ladybug.ECS.Components.InputComponent.#ctor">
+            <summary>
+            Creates a new InputComponent instance
+            </summary>
+        </member>
+        <member name="P:Ladybug.ECS.Components.InputComponent.MonitorKeyboard">
+            <summary>
+            Whether to monitor the keyboard for input
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.ECS.Components.InputComponent.MonitorMouse">
+            <summary>
+            Whether to monitor the mouse for input
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.ECS.Components.InputComponent.MonitorGamepad">
+            <summary>
+            Whether to monitor a gamepad for input
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.ECS.Components.InputComponent.GamepadIndex">
+            <summary>
+            Index of the gamepad to monitor for input
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.ECS.Components.InputComponent.GamepadMonitor">
+            <summary>
+            The <see cref="T:Ladybug.Input.GamepadMonitor"/> instance used by this component
+            to monitor gamepad input
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.ECS.Components.InputComponent.MouseMonitor">
+            <summary>
+            The <see cref="T:Ladybug.Input.MouseMonitor"/> instance used by this component
+            to monitor mouse input
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.ECS.Components.InputComponent.KeyboardMonitor">
+            <summary>
+            The <see cref="T:Ladybug.Input.KeyboardMonitor"/> instance used by this component
+            to monitor keyboard input
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:Ladybug.ECS.Components.SpriteComponentSystem">
+            <summary>
+            ComponentSystem responsible for processing <see cref="T:Ladybug.ECS.Components.SpriteComponent"/> Components
+            </summary>
+        </member>
+        <member name="T:Ladybug.ECS.Components.SpriteComponent">
+            <summary>
+            Ladybug standard component for sprites
+            </summary>
+        </member>
+        <member name="M:Ladybug.ECS.Components.SpriteComponent.#ctor">
+            <summary>
+            Creates a new SpriteComponent instance
+            </summary>
+        </member>
+        <member name="P:Ladybug.ECS.Components.SpriteComponent.Sprite">
+            <summary>
+            <see cref="T:Ladybug.Graphics.AnimatedSprite"/> instance used
+            by this SpriteComponent
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.ECS.Components.SpriteComponent.Color">
+            <summary>
+            Color filter applied to this SpriteComponent
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:Ladybug.ECS.Components.SpriteComponent.SetSprite(Ladybug.Graphics.AnimatedSprite)">
+            <summary>
+            Sets the component's animated sprite
+            </summary>
+            <param name="sprite"></param>
+        </member>
+        <member name="M:Ladybug.ECS.Components.SpriteComponent.AddAnimation(System.String,Ladybug.Graphics.SpriteAtlas,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Adds a new Animation to this SpriteComponent
+            </summary>
+            <param name="animationName">Name of the new Animation</param>
+            <param name="sourceAtlas">Source <see cref="T:Ladybug.Graphics.SpriteAtlas"/></param>
+            <param name="rows">Rows in the source texture</param>
+            <param name="columns">Columns in the source texture</param>
+            <param name="animationSpeed">Speed of the animation</param>
+            <param name="startFrame">First frame of the animation</param>
+            <param name="endFrame">Last frame of the animation</param>
+            <param name="setDefault">
+            Whether to set this animation as the SpriteComponent's default
+            animation
+            </param>
+        </member>
+        <member name="M:Ladybug.ECS.Components.SpriteComponent.GetAnimation(System.String)">
+            <summary>
+            Gets an <see cref="T:Ladybug.Graphics.AnimationSequence"/> from
+            this SpriteComponent's <see cref="T:Ladybug.Graphics.AnimatedSprite"/>
+            </summary>
+            <param name="animationName">Name of the animation to retrieve</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ladybug.ECS.Components.SpriteComponent.GetAnimation">
+            <summary>
+            Gets this the current <see cref="T:Ladybug.Graphics.AnimationSequence"/> 
+            of this SpriteComponent's <see cref="T:Ladybug.Graphics.AnimatedSprite"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Ladybug.ECS.Components.SpriteComponent.SetAnimation(System.String)">
+            <summary>
+            Sets the SpriteComponent's current 
+            <see cref="T:Ladybug.Graphics.AnimationSequence"/> 
+            </summary>
+            <param name="animationName"></param>
+        </member>
+        <member name="T:Ladybug.ECS.ECS">
+            <summary>
+            Ladybug Entity-Component-System
+            </summary>
+        </member>
+        <member name="M:Ladybug.ECS.ECS.#ctor(Ladybug.Scene)">
+            <summary>
+            Creates a new ECS instance
+            </summary>
+            <param name="scene">Scene object containing this ECS</param>
+        </member>
+        <member name="P:Ladybug.ECS.ECS.ResourceCatalog">
+            <summary>
+            This ECS's resident <see cref="T:Ladybug.ResourceCatalog"/>
+            </summary>
+            <remarks>
+            Default: Parent Scene's <see cref="T:Ladybug.ResourceCatalog"/>
+            </remarks>
+        </member>
+        <member name="P:Ladybug.ECS.ECS.Scene">
+            <summary>
+            This ECS' parent <see cref="T:Ladybug.Scene"/> object
+            </summary>
+        </member>
+        <member name="P:Ladybug.ECS.ECS.Entities">
+            <summary>
+            List of Entities managed by this ECS
+            </summary>
+        </member>
+        <member name="F:Ladybug.ECS.ECS._componentsToSystems">
+            <summary>
+            Dictionary tracking which ComponentSystems are responsible for processing
+            which Components
+            </summary>
+        </member>
+        <member name="F:Ladybug.ECS.ECS._updateMethods">
+            <summary>
+            Dictionary of Update methods called when this ECS is Updated
+            </summary>
+        </member>
+        <member name="F:Ladybug.ECS.ECS._drawMethods">
+            <summary>
+            Dictionary of Draw methods called when this ECS is Drawn
+            </summary>
+        </member>
+        <member name="F:Ladybug.ECS.ECS._updateSteps">
+            <summary>
+            List of individual steps that are executed, in given order, during Update
+            </summary>
+        </member>
+        <member name="F:Ladybug.ECS.ECS._drawSteps">
+            <summary>
+            List of individual steps that are executed, in given order, during Draw
+            </summary>
+        </member>
+        <member name="M:Ladybug.ECS.ECS.RegisterComponentSystem``2">
+            <summary>
+            Registers a <see cref="T:Ladybug.ECS.Component"/> type and the <see cref="T:Ladybug.ECS.ComponentSystem`1"/> type that will be processing it.
+            </summary>
+            <typeparam name="C"><see cref="T:Ladybug.ECS.Component"/> type to be registered</typeparam>
+            <typeparam name="S"><see cref="T:Ladybug.ECS.ComponentSystem`1"/> type that will be processing the given Component type</typeparam>
+        </member>
+        <member name="M:Ladybug.ECS.ECS.RegisterComponent(Ladybug.ECS.Component)">
+            <summary>
+            Registers a <see cref="T:Ladybug.ECS.Component"/> with this ECS
+            </summary>
+            <param name="component"><see cref="T:Ladybug.ECS.Component"/> to be registered with the ECS</param>
+        </member>
+        <member name="M:Ladybug.ECS.ECS.TryGetComponentSystem(Ladybug.ECS.Component,System.Type@)">
+            <summary>
+            Attempts to retrieve a reference to the <see cref="T:Ladybug.ECS.ComponentSystem`1"/> type responsible
+            for processing the given <see cref="T:Ladybug.ECS.Component"/>
+            </summary>
+            <param name="component"><see cref="T:Ladybug.ECS.Component"/> to attempt to find <see cref="T:Ladybug.ECS.ComponentSystem`1"/> for</param>
+            <param name="system">Reference to the found <see cref="T:Ladybug.ECS.ComponentSystem`1"/></param>
+            <returns>True if matching ComponentSystem is found, otherwise False</returns>
+        </member>
+        <member name="M:Ladybug.ECS.ECS.CreateEntity">
+            <summary>
+            Creates a new <see cref="T:Ladybug.ECS.Entity"/> to be managed by this ECS
+            </summary>
+            <returns>Reference to the new <see cref="T:Ladybug.ECS.Entity"/></returns>
+        </member>
+        <member name="M:Ladybug.ECS.ECS.RemoveEntity(Ladybug.ECS.Entity)">
+            <summary>
+            Removes the given <see cref="T:Ladybug.ECS.Entity"/> from this ECS
+            </summary>
+            <param name="e"><see cref="T:Ladybug.ECS.Entity"/> to be removed from the ECS</param>
+        </member>
+        <member name="M:Ladybug.ECS.ECS.TryFindEntity(System.String,Ladybug.ECS.Entity@)">
+            <summary>
+            Attempts to find an <see cref="T:Ladybug.ECS.Entity"/>
+            </summary>
+            <param name="name">Name of <see cref="T:Ladybug.ECS.Entity"/> to find</param>
+            <param name="entity">Reference to found <see cref="T:Ladybug.ECS.Entity"/></param>
+            <returns>True if matching <see cref="T:Ladybug.ECS.Entity"/> is found, otherwise False</returns>
+            <remarks>
+            This method will find only the first matching Entity.
+            Results may be unexpected if multiple Entities exist with
+            the same name (use id overload instead if this is the case).
+            </remarks>
+        </member>
+        <member name="M:Ladybug.ECS.ECS.TryFindEntity(System.UInt64,Ladybug.ECS.Entity@)">
+            <summary>
+            Attempts to find an <see cref="T:Ladybug.ECS.Entity"/>
+            </summary>
+            <param name="id">ID of the <see cref="T:Ladybug.ECS.Entity"/> to find</param>
+            <param name="entity">Reference to the found <see cref="T:Ladybug.ECS.Entity"/></param>
+            <returns>True if matching Entity is found, otherwise False</returns>
+        </member>
+        <member name="M:Ladybug.ECS.ECS.Initialize">
+            <summary>
+            Initializes all Entities managed by the ECS
+            </summary>
+            <remarks>
+            Call this after all Entities have been added to the ECS.
+            Entities added to the ECS during runtime will have to have
+            Entity.Initialize() called on them individually
+            </remarks>
+        </member>
+        <member name="M:Ladybug.ECS.ECS.FindAllComponents``1">
+            <summary>
+            Finds all Components of type T managed by this ECS
+            </summary>
+            <typeparam name="T">Type of <see cref="T:Ladybug.ECS.Component"/> to find</typeparam>
+            <returns>List of all found Components</returns>
+        </member>
+        <member name="M:Ladybug.ECS.ECS.AddUpdateStep(System.String,System.Int32)">
+            <summary>
+            Adds a step to this ECS's update process
+            </summary>
+            <param name="step">Name of step to be added</param>
+            <param name="index">
+            Position of step in update process. Appends the step to 
+            the end of the process if set to -1 or not specified
+            </param>
+        </member>
+        <member name="M:Ladybug.ECS.ECS.SetUpdateSteps(System.Collections.Generic.List{System.String})">
+            <summary>
+            Defines the update steps used by this ECS
+            </summary>
+            <param name="steps">List of update steps to be used by this ECS</param>
+        </member>
+        <member name="M:Ladybug.ECS.ECS.SetUpdateSteps(System.String[])">
+            <summary>
+            Defines the update steps used by this ECS
+            </summary>
+            <param name="steps">List of update steps to be used by this ECS</param>
+        </member>
+        <member name="M:Ladybug.ECS.ECS.AddDrawStep(System.String,System.Int32)">
+            <summary>
+            Adds a step to this ECS's draw process
+            </summary>
+            <param name="step">Name of draw step to be added</param>
+            <param name="index">
+            Position of step in draw process. Appends the step to 
+            the end of the process if set to -1 or not specified
+            </param>
+        </member>
+        <member name="M:Ladybug.ECS.ECS.SetDrawSteps(System.Collections.Generic.List{System.String})">
+            <summary>
+            Defines the draw steps used by this ECS
+            </summary>
+            <param name="steps">List of draw steps to be used by this ECS</param>
+        </member>
+        <member name="M:Ladybug.ECS.ECS.SetDrawSteps(System.String[])">
+            <summary>
+            Defines the draw steps used by this ECS
+            </summary>
+            <param name="steps">List of draw steps to be used by this ECS</param>
+        </member>
+        <member name="M:Ladybug.ECS.ECS.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Runs the update process for the current frame for all
+            components managed by this ECS
+            </summary>
+            <param name="gameTime"></param>
+        </member>
+        <member name="M:Ladybug.ECS.ECS.Draw(Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Runs the draw process for the current frame for all
+            components managed by this ECS
+            </summary>
+            <param name="gameTime"></param>
+            <param name="spriteBatch"></param>
+        </member>
+        <member name="M:Ladybug.ECS.ECS.RequestDrawSort(Ladybug.ECS.Component)">
+            <summary>
+            Requests that the <see cref="T:Ladybug.ECS.ComponentSystem`1"/> responsible for managing
+            the given <see cref="T:Ladybug.ECS.Component"/> resort the draw priority of its components.
+            </summary>
+            <param name="component"></param>
+            <remarks>
+            This is automatically called whenever a Component's DrawPriority
+            property is modified
+            </remarks>
+        </member>
+        <member name="T:Ladybug.ECS.Entity">
+            <summary>
+            Ladybug ECS Entity
+            </summary>
+        </member>
+        <member name="P:Ladybug.ECS.Entity.Initialized">
+            <summary>
+            Whether the Entity has been initialized
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.ECS.Entity.Transform">
+            <summary>
+            The Entity's <see cref="T:Ladybug.Transform"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Ladybug.ECS.Entity.ECS">
+            <summary>
+            The <seee cref="T:Ladybug.ECS.ECS"/> managing this Entity
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.ECS.Entity.Tags">
+            <summary>
+            List of Tags associated with this Entity
+            </summary>
+        </member>
+        <member name="P:Ladybug.ECS.Entity.Name">
+            <summary>
+            Name of the Entity
+            </summary>
+        </member>
+        <member name="P:Ladybug.ECS.Entity.ID">
+            <summary>
+            Unique ID of the Entity
+            </summary>
+        </member>
+        <member name="P:Ladybug.ECS.Entity.Active">
+            <summary>
+            Whether the Entity is active
+            </summary>
+        </member>
+        <member name="P:Ladybug.ECS.Entity.Visible">
+            <summary>
+            Whether the Entity is visible.
+            </summary>
+            <value></value>
+        </member>
+        <member name="F:Ladybug.ECS.Entity.Components">
+            <summary>
+            List of <see cref="T:Ladybug.ECS.Component"/> instances
+            contained in this Entity
+            </summary>
+        </member>
+        <member name="M:Ladybug.ECS.Entity.Initialize">
+            <summary>
+            Initializes the Entity's Components
+            </summary>
+        </member>
+        <member name="M:Ladybug.ECS.Entity.AddComponent``1">
+            <summary>
+            Adds a new <see cref="T:Ladybug.ECS.Component"/> to this Entity
+            </summary>
+            <typeparam name="T">
+            Type of <see cref="T:Ladybug.ECS.Component"/> 
+            to add to this Entity
+            </typeparam>
+            <returns>Entity</returns>
+        </member>
+        <member name="M:Ladybug.ECS.Entity.AddComponent``1(``0@)">
+            <summary>
+            Adds a new <see cref="T:Ladybug.ECS.Component"/> to this Entity
+            </summary>
+            <typeparam name="T">
+            Type of <see cref="T:Ladybug.ECS.Component"/> 
+            to add to this Entity
+            </typeparam>
+            <param name="component">
+            Reference to the new <see cref="T:Ladybug.ECS.Component"/>
+            added to the Entity
+            </param>
+            <returns>Entity</returns>
+        </member>
+        <member name="M:Ladybug.ECS.Entity.TryGetComponent``1(``0@)">
+            <summary>
+            Attempts to retrieve a <see cref="T:Ladybug.ECS.Component"/>
+            contained in the Entity
+            </summary>
+            <param name="component">Matching <see cref="T:Ladybug.ECS.Component"/> </param>
+            <typeparam name="T"><see cref="T:Ladybug.ECS.Component"/>  type to find</typeparam>
+            <returns>True if <see cref="T:Ladybug.ECS.Component"/> found, otherwise False</returns>
+        </member>
+        <member name="M:Ladybug.ECS.Entity.TryGetComponent``1(System.String,``0@)">
+            <summary>
+            Attempts to retrieve a <see cref="T:Ladybug.ECS.Component"/>
+            contained in the Entity
+            </summary>
+            <param name="name">Name of <see cref="T:Ladybug.ECS.Component"/> to find</param>
+            <param name="component">Matching <see cref="T:Ladybug.ECS.Component"/> </param>
+            <typeparam name="T"><see cref="T:Ladybug.ECS.Component"/>  type to find</typeparam>
+            <returns>True if <see cref="T:Ladybug.ECS.Component"/> found, otherwise False</returns>
+        </member>
+        <member name="M:Ladybug.ECS.Entity.GetComponent``1">
+            <summary>
+            Retrieves a <see cref="T:Ladybug.ECS.Component"/> contained
+            in the entity
+            </summary>
+            <typeparam name="T">Type of <see cref="T:Ladybug.ECS.Component"/> to retrieve</typeparam>
+            <returns>Matching <see cref="T:Ladybug.ECS.Component"/> if found, otherwise null</returns>
+        </member>
+        <member name="M:Ladybug.ECS.Entity.GetComponent``1(System.String)">
+            <summary>
+            Retrieves a <see cref="T:Ladybug.ECS.Component"/> contained
+            in the entity
+            </summary>
+            <param name="name">Name of <see cref="T:Ladybug.ECS.Component"/> to retrieve</param>
+            <typeparam name="T">Type of <see cref="T:Ladybug.ECS.Component"/> to retrieve</typeparam>
+            <returns>Matching <see cref="T:Ladybug.ECS.Component"/> if found, otherwise null</returns>
+        </member>
+        <member name="T:Ladybug.FSM.State">
+            <summary>
+            A State that can be processed by a
+            <see cref="T:Ladybug.FSM.StateMachine"/>
+            </summary>
+        </member>
+        <member name="E:Ladybug.FSM.State.Entered">
+            <summary>
+            State has become the StateMachine's
+            active state
+            </summary>
+        </member>
+        <member name="E:Ladybug.FSM.State.Exited">
+            <summary>
+            State is no longer the StateMachine's
+            active state
+            </summary>
+        </member>
+        <member name="M:Ladybug.FSM.State.#ctor">
+            <summary>
+            Creates a new State
+            </summary>
+        </member>
+        <member name="M:Ladybug.FSM.State.#ctor(Ladybug.FSM.State)">
+            <summary>
+            Crates a new State,
+            copying the behavior of the provided
+            state
+            </summary>
+            <param name="template">Template State</param>
+        </member>
+        <member name="M:Ladybug.FSM.State.OnEnter(System.Action)">
+            <summary>
+            Sets the behavior of this State when
+            this becomes the active
+            state of a <see cref="T:Ladybug.FSM.StateMachine"/>
+            </summary>
+            <param name="action">Action defining OnEnter behavior</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ladybug.FSM.State.OnUpdate(System.Action{Microsoft.Xna.Framework.GameTime})">
+            <summary>
+            Sets the behavior of this State when
+            its <see cref="T:Ladybug.FSM.StateMachine"/> is updated
+            </summary>
+            <param name="action">Action defining OnUpdate behavior</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ladybug.FSM.State.OnExit(System.Action)">
+            <summary>
+            Sets the behavior of this State when
+            a <see cref="T:Ladybug.FSM.StateMachine"/> replaces this State with
+            another State
+            </summary>
+            <param name="action">Action defining OnExit behavior</param>
+            <returns></returns>
+        </member>
+        <member name="T:Ladybug.FSM.StateMachine">
+            <summary>
+            Ladybug Finite State Machine
+            </summary>
+        </member>
+        <member name="E:Ladybug.FSM.StateMachine.StateChanged">
+            <summary>
+            The current <see cref="T:Ladybug.FSM.State"/> has changed
+            </summary>
+        </member>
+        <member name="M:Ladybug.FSM.StateMachine.#ctor">
+            <summary>
+            Creates a new StateMachine instance
+            </summary>
+        </member>
+        <member name="M:Ladybug.FSM.StateMachine.#ctor(Ladybug.FSM.State)">
+            <summary>
+            Creates a new Statemachine Instance
+            </summary>
+            <param name="initialState">Initial <see cref="T:Ladybug.FSM.State"/></param>
+        </member>
+        <member name="M:Ladybug.FSM.StateMachine.ChangeState(Ladybug.FSM.State)">
+            <summary>
+            Changes the active <see cref="T:Ladybug.FSM.State"/>
+            </summary>
+            <param name="newState">New <see cref="T:Ladybug.FSM.State"/></param>
+        </member>
+        <member name="M:Ladybug.FSM.StateMachine.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Updates the StateMachine
+            </summary>
+            <param name="gameTime"></param>
+        </member>
+        <member name="T:Ladybug.Graphics.ColorFormat">
+            <summary>
+            Enum containing available color formats
+            </summary>
+        </member>
+        <member name="F:Ladybug.Graphics.ColorFormat.HEX">
+            <summary>
+            Hexadecimal color format
+            </summary>
+        </member>
+        <member name="F:Ladybug.Graphics.ColorFormat.NAME">
+            <summary>
+            Name color format
+            </summary>
+            <remarks>
+            Valid names as defined as static
+            properties of Microsoft.Xna.Framework.Color
+            </remarks>
+        </member>
+        <member name="F:Ladybug.Graphics.ColorFormat.RGB">
+            <summary>
+            RGB color format
+            </summary>
+        </member>
+        <member name="T:Ladybug.Graphics.ColorExtensions">
+            <summary>
+            Static class containing Color static helper and extension methods
+            </summary>
+        </member>
+        <member name="M:Ladybug.Graphics.ColorExtensions.GetHexString(Microsoft.Xna.Framework.Color)">
+            <summary>
+            Returns a hexadecimal string representation
+            of the given Color
+            </summary>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ladybug.Graphics.ColorExtensions.GetColorFromHex(System.String)">
+            <summary>
+            Returns a Color representation of the given
+            hexadecimal color strings
+            </summary>
+            <param name="hex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ladybug.Graphics.ColorExtensions.GetHexFromColor(Microsoft.Xna.Framework.Color)">
+            <summary>
+            Returns a hexadecimal string representation
+            of the given Color
+            </summary>
+            <param name="color"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ladybug.Graphics.ColorExtensions.TryParseColor(System.String,Microsoft.Xna.Framework.Color@,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Attempts to return a color representation of a string
+            </summary>
+            <param name="color"></param>
+            <param name="result"></param>
+            <param name="pallete"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ladybug.Graphics.ColorExtensions.TryParseColor(System.String,Microsoft.Xna.Framework.Color@)">
+            <summary>
+            Attempts to return the color representation of a string
+            </summary>
+            <param name="color"></param>
+            <param name="result"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Ladybug.Graphics.Sprite">
+            <summary>
+            Ladybug Sprite
+            </summary>
+        </member>
+        <member name="M:Ladybug.Graphics.Sprite.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D)">
+            <summary>
+            Creates a new Sprite instance
+            </summary>
+            <param name="texture">Source Texture</param>
+        </member>
+        <member name="M:Ladybug.Graphics.Sprite.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Rectangle)">
+            <summary>
+            Creates a new Sprite instance
+            </summary>
+            <param name="texture">Source Texture</param>
+            <param name="frame">Frame</param>
+        </member>
+        <member name="P:Ladybug.Graphics.Sprite.Texture">
+            <summary>
+            The source Texture of the sprite
+            </summary>
+        </member>
+        <member name="P:Ladybug.Graphics.Sprite.Frame">
+            <summary>
+            The portion of the Texture that contains the Sprite
+            </summary>
+        </member>
+        <member name="P:Ladybug.Graphics.Sprite.Transform">
+            <summary>
+            Transform containing this Sprite's size, scale, rotation, and
+            position information
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Ladybug.Graphics.Sprite.Color">
+            <summary>
+            Color value of the Sprite
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:Ladybug.Graphics.Sprite.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Draws the Sprite
+            </summary>
+            <param name="spriteBatch"></param>
+        </member>
+        <member name="M:Ladybug.Graphics.Sprite.GetTextureFromMap(Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Graphics.GraphicsDevice,System.Nullable{System.Int32})">
+            <summary>
+            Creates a texture from a 9-slice image map
+            </summary>
+            <param name="sourceMap">Source image map</param>
+            <param name="spriteDimensions">Target dimensions of resulting texture</param>
+            <param name="graphicsDevice"></param>
+            <param name="cellSideLength"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ladybug.Graphics.Sprite.GetTextureFromColor(Microsoft.Xna.Framework.Graphics.GraphicsDevice,Microsoft.Xna.Framework.Color)">
+            <summary>
+            Creates a 1-pixel Texture of a solid color
+            </summary>
+            <param name="graphicsDevice"></param>
+            <param name="color"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Ladybug.Graphics.SpriteAtlas">
+            <summary>
+            Ladybug SpriteAtlas
+            </summary>
+        </member>
+        <member name="M:Ladybug.Graphics.SpriteAtlas.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D,System.Int32,System.Int32)">
+            <summary>
+            Creates a new SpriteAtlas
+            </summary>
+            <param name="sourceTexture">Source texture</param>
+            <param name="rows">Number of sprite rows in source texture</param>
+            <param name="cols">Number of sprite columns in source texture</param>
+        </member>
+        <member name="P:Ladybug.Graphics.SpriteAtlas.SpriteWidth">
+            <summary>
+            Width of a single sprite in this SpriteAtlas
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.Graphics.SpriteAtlas.SpriteHeight">
+            <summary>
+            Height of a single sprite in the SpriteAtlas
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.Graphics.SpriteAtlas.Texture">
+            <summary>
+            Source texture used by this SpriteAtlas
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.Graphics.SpriteAtlas.Item(System.Int32)">
+            <summary>
+            Returns a <see cref="T:Ladybug.Graphics.Sprite"/> stored in this SpriteAtlas
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.Graphics.SpriteAtlas.Item(System.Int32,System.Int32)">
+            <summary>
+            Returns a <see cref="T:Ladybug.Graphics.Sprite"/> stored in this SpriteAtlas
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.Graphics.SpriteAtlas.Item(Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Returns a <see cref="T:Ladybug.Graphics.Sprite"/> stored in this SpriteAtlas
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.Graphics.SpriteAtlas.Item(System.String)">
+            <summary>
+            Returns a <see cref="T:Ladybug.Graphics.Sprite"/> stored in this SpriteAtlas
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:Ladybug.Graphics.SpriteAtlas.TagSprite(System.String,Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Adds a string tag to a <see cref="T:Ladybug.Graphics.Sprite"/> stored in this SpriteAtlas
+            </summary>
+            <param name="tag">Name of tag</param>
+            <param name="coordinates">Coordinate of <see cref="T:Ladybug.Graphics.Sprite"/> in SpriteAtlas</param>
+        </member>
+        <member name="M:Ladybug.Graphics.SpriteAtlas.TagSprite(System.String,System.Int32,System.Int32)">
+            <summary>
+            Adds a string tag to a <see cref="T:Ladybug.Graphics.Sprite"/> stored in this SpriteAtlas
+            </summary>
+            <param name="tag">Name of tag</param>
+            <param name="x">X coordinate of <see cref="T:Ladybug.Graphics.Sprite"/> in SpriteAtlas</param>
+            <param name="y">Y coordinate of <see cref="T:Ladybug.Graphics.Sprite"/> in SpriteAtlas</param>
+        </member>
+        <member name="M:Ladybug.Graphics.SpriteAtlas.TagSprite(System.String,System.Int32)">
+            <summary>
+            Adds a string tag to a <see cref="T:Ladybug.Graphics.Sprite"/> stored in this SpriteAtlas
+            </summary>
+            <param name="tag">Name of tag</param>
+            <param name="index">Index of <see cref="T:Ladybug.Graphics.Sprite"/> in SpriteAtlas</param>
+        </member>
+        <member name="M:Ladybug.Graphics.SpriteAtlas.GetSpriteFromTag(System.String)">
+            <summary>
+            Retrieves the <see cref="T:Ladybug.Graphics.Sprite"/> with the given tag
+            </summary>
+            <param name="tag">Name of tag</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ladybug.Pathfinding.NodePath.Reverse">
+            <summary>
+            Reverses the NodePath in-place.
+            </summary>
+        </member>
+        <member name="M:Ladybug.Pathfinding.NodePath.GetReverse">
+            <summary>
+            Returns a reversed copy of this NodePath
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Ladybug.UI.Control">
+            <summary>
+            Base Class for all Menu Controls
+            </summary>
+        </member>
+        <member name="T:Ladybug.CircularArray`1">
+            <summary>
+            Represents a collection of reusable elements
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Ladybug.CircularArray`1.#ctor(System.Int32)">
+            <summary>
+            Creates a new CircularArray
+            </summary>
+            <param name="capacity">Maximum capacity</param>
+        </member>
+        <member name="P:Ladybug.CircularArray`1.Item(System.Int32)">
+            <summary>
+            Retrieves the element at the given index
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.CircularArray`1.Start">
+            <summary>
+            Current start position
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.CircularArray`1.Count">
+            <summary>
+            Number of current items
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Ladybug.CircularArray`1.Capacity">
+            <summary>
+            Maximum capacity
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:Ladybug.CircularArray`1.Populate``1">
+            <summary>
+            Populates the collection, filling it
+            to maximum capacity with new item instances
+            </summary>
+            <typeparam name="K"></typeparam>
+        </member>
+        <member name="M:Ladybug.CircularArray`1.Get">
+            <summary>
+            Retrieves the next item in the collection
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Ladybug.Feed`1">
+            <summary>
+            Represents a List with a given
+            range of elements that are currently
+            accessible
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Ladybug.Feed`1.MaxLines">
+            <summary>
+            Size of the <see cref="P:Ladybug.Feed`1.View"/>
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:Ladybug.Feed`1.#ctor(System.Int32)">
+            <summary>
+            Creates a new Feed
+            </summary>
+            <param name="maxLines">
+            Size of the <see cref="P:Ladybug.Feed`1.View"/>
+            </param>
+        </member>
+        <member name="M:Ladybug.Feed`1.#ctor(System.Collections.Generic.List{`0},System.Int32,System.Int32)">
+            <summary>
+            Creates a new Feed
+            </summary>
+            <param name="list">Source list</param>
+            <param name="maxLines">
+            Size of the <see cref="P:Ladybug.Feed`1.View"/> 
+            </param>
+            <param name="startOffset">
+            Initial <see cref="P:Ladybug.Feed`1.View"/> position
+            </param>
+        </member>
+        <member name="P:Ladybug.Feed`1.MaxOffset">
+            <summary>
+            Maximum possible offset value considering total
+            item count and size of the <see cref="P:Ladybug.Feed`1.View"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Ladybug.Feed`1.View">
+            <summary>
+            List representing the current accessible items in the
+            Feed
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:Ladybug.Feed`1.SetMaxLines(System.Int32)">
+            <summary>
+            Sets the maximum size of the <see cref="P:Ladybug.Feed`1.View"/>
+            </summary>
+            <param name="maxLines"></param>
+        </member>
+        <member name="M:Ladybug.Feed`1.ResetPosition">
+            <summary>
+            Resets the <see cref="P:Ladybug.Feed`1.View"/> to
+            the beginning of the Feed
+            </summary>
+        </member>
+        <member name="M:Ladybug.Feed`1.Reset">
+            <summary>
+            Resets the Feed, clearing all items
+            and returning the <see cref="P:Ladybug.Feed`1.View"/>
+            position to the beginning of the Feed
+            </summary>
+        </member>
+        <member name="M:Ladybug.Feed`1.Scroll(System.Int32)">
+            <summary>
+            Moves the <see cref="P:Ladybug.Feed`1.View"/> relative
+            to its current position
+            </summary>
+            <param name="offset">
+            Direction and distance to move the <see cref="P:Ladybug.Feed`1.View"/>
+            </param>
+        </member>
+        <member name="M:Ladybug.Feed`1.ScrollTo(System.Int32)">
+            <summary>
+            Moves the <see cref="P:Ladybug.Feed`1.View"/> to
+            the specified position
+            </summary>
+            <param name="offset"></param>
+        </member>
+        <member name="M:Ladybug.Feed`1.ScrollToEnd">
+            <summary>
+            Moves the <see cref="P:Ladybug.Feed`1.View"/> to the
+            furthest possible position
+            </summary>
+        </member>
+        <member name="M:Ladybug.Feed`1.AddLine(`0,System.Boolean)">
+            <summary>
+            Adds an item to the Feed
+            </summary>
+            <param name="item"></param>
+            <param name="preventScroll"></param>
+        </member>
+        <member name="T:Ladybug.Extensions">
+            <summary>
+            Static class containing common Ladybug static helper and extension methods
+            </summary>
+        </member>
+        <member name="M:Ladybug.Extensions.GetReader(System.Xml.XmlDocument)">
+            <summary>
+            Returns an XmlReader for the given XmlDocument
+            </summary>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ladybug.Extensions.GetFeed``1(System.Collections.Generic.List{``0},System.Int32,System.Int32)">
+            <summary>
+            Creates a new <see cref="T:Ladybug.Feed`1"/> from a List
+            </summary>
+            <param name="list">Source List for <see cref="T:Ladybug.Feed`1"/> </param>
+            <param name="MaxLines">Maximum number of lines in <see cref="T:Ladybug.Feed`1"/></param>
+            <param name="startOffset">Start line offset for <see cref="T:Ladybug.Feed`1"/></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Ladybug.Extensions.ToAngle(Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Gets an angle representation of a Vector2
+            </summary>
+            <param name="vector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ladybug.Extensions.ToVector2(System.Single)">
+            <summary>
+            Gets a Vector2 representation of an angle
+            </summary>
+            <param name="angle"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ladybug.Extensions.ToPoint(Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Gets a Point representation of a Vector2
+            </summary>
+            <param name="vector"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ladybug.Extensions.AngleTo(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Gets the angle between two Vector2s
+            </summary>
+            <param name="p1"></param>
+            <param name="p2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ladybug.Extensions.DistanceTo(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Gets the distance between two Vector2s
+            </summary>
+            <param name="p1"></param>
+            <param name="p2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ladybug.Extensions.Lerp(System.Single,System.Single,System.Single)">
+            <summary>
+            Linear Interpolation
+            </summary>
+            <param name="p1"></param>
+            <param name="p2"></param>
+            <param name="by"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Ladybug.BoxHandle">
+            <summary>
+            Enum representing handle positions of a Rectangle
+            </summary>
+        </member>
+        <member name="F:Ladybug.BoxHandle.TopLeft">
+            <summary>
+            Top-left corner
+            </summary>
+        </member>
+        <member name="F:Ladybug.BoxHandle.TopRight">
+            <summary>
+            Top-right corner
+            </summary>
+        </member>
+        <member name="F:Ladybug.BoxHandle.BottomLeft">
+            <summary>
+            Bottom-left corner
+            </summary>
+        </member>
+        <member name="F:Ladybug.BoxHandle.BottomRight">
+            <summary>
+            Bottom-right corner
+            </summary> 
+        </member>
+        <member name="F:Ladybug.BoxHandle.Center">
+            <summary>
+            Center
+            </summary>
+        </member>
+        <member name="T:Ladybug.RectangleExtensions">
+            <summary>
+            Static class containing Rectangle static helper and extension methods
+            </summary>
+        </member>
+        <member name="M:Ladybug.RectangleExtensions.CopyAtPosition(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Vector2,Ladybug.BoxHandle)">
+            <summary>
+            Get a new copy of Rectangle at given position
+            </summary>
+            <param name="r"></param>
+            <param name="position"></param>
+            <param name="handle"></param>
+            <returns>New Rectangle of same dimensions at given position</returns>
+        </member>
+        <member name="M:Ladybug.RectangleExtensions.CopyAtPosition(Microsoft.Xna.Framework.Rectangle,System.Int32,System.Int32,Ladybug.BoxHandle)">
+            <summary>
+            Get a new copy of Rectangle at given position
+            </summary>
+            <param name="r"></param>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="handle"></param>
+            <returns>New Rectangle of same dimensions at given position</returns>
+        </member>
+        <member name="M:Ladybug.RectangleExtensions.CopyAtOffset(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Get a new copy of Rectangle at given offset
+            </summary>
+            <param name="r"></param>
+            <param name="newPosition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ladybug.RectangleExtensions.CopyAtOffset(Microsoft.Xna.Framework.Rectangle,System.Int32,System.Int32)">
+            <summary>
+            Get a new copy of Rectangle at given offset
+            </summary>
+            <param name="r"></param>
+            <param name="x"></param>
+            <param name="y"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ladybug.RectangleExtensions.PointInBounds(Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Whether a given Point is within the bounds of this Rectangle
+            </summary>
+            <param name="r"></param>
+            <param name="position"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ladybug.RectangleExtensions.GetHandlePosition(Microsoft.Xna.Framework.Rectangle,Ladybug.BoxHandle)">
+            <summary>
+            Gets the Vector2 position of one of this Rectangle's handles
+            </summary>
+            <param name="r"></param>
+            <param name="handle"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Ladybug.StringExtensions">
+            <summary>
+            Static class containing String static helper and extension methods
+            </summary>
+        </member>
+        <member name="M:Ladybug.StringExtensions.ToBool(System.String,System.Boolean)">
+            <summary>
+            Gets bool representation of a string
+            </summary>
+            <param name="value"></param>
+            <param name="throwOnFail">
+            Whether to throw an exception upon failed conversion
+            </param>
+            <returns></returns>
+            <remarks>
+            If method is unable to determine the given
+            string's value, it will return false
+            </remarks>
+        </member>
+        <member name="T:Ladybug.TypeExtensions">
+            <summary>
+            Static class containing Type static helper and extension methods
+            </summary>
+        </member>
+        <member name="M:Ladybug.TypeExtensions.TryLocateType(System.String,System.Type@,System.String[])">
+            <summary>
+            Attempts to locate a Type by name
+            </summary>
+            <param name="typeName">Name of type to locate</param>
+            <param name="type">Matching type, if found</param>
+            <param name="assemblies">Assemblies to search for Type in</param>
+            <returns>True if matching Type found, otherwise False</returns>
+        </member>
+        <member name="T:Ladybug.ThreadManager">
+            <summary>
+            Handles queuing and processing tasks
+            on the main thread.
+            </summary>
+        </member>
+        <member name="M:Ladybug.ThreadManager.Update">
+            <summary>
+            Process tasks in the ThreadManager's queue
+            </summary>
+        </member>
+        <member name="M:Ladybug.ThreadManager.QueueAction(System.Action)">
+            <summary>Sets an action to be executed on the main thread.</summary>
+            <param name="_action">The action to be executed on the main thread.</param>
+        </member>
+        <member name="M:Ladybug.ThreadManager.ExecuteActions">
+            <summary>Executes all code meant to run on the main thread. NOTE: Call this ONLY from the main thread.</summary>
+        </member>
+        <member name="T:XmlDocReader">
+            <summary>
+            Ladybug Pipeline XMLDocument reader
+            </summary>
+        </member>
+        <member name="M:XmlDocReader.Read(Microsoft.Xna.Framework.Content.ContentReader,System.Xml.XmlDocument)">
+            <summary>
+            Reads an XML File and produces an XMLDocument
+            </summary>
+            <param name="input"></param>
+            <param name="existingInstance"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
